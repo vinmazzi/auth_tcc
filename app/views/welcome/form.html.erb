@@ -1,0 +1,15 @@
+<%= form_for :login, url: login_path do |l| %>
+   <p>
+  	<%= l.label :Login%><br>
+  	<%= l.text_field :login%><br>
+   </p>
+
+   <p>
+  	<%= l.label :Password%><br>
+  	<%= l.password_field :pwd%><br>
+   </p>
+   <p>
+  	<%= l.submit :enviar%><br>
+   </p>
+<% end %>
+
