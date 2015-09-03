@@ -1,5 +1,14 @@
 class LoginsController < ApplicationController
+
+   helper_method :cadastro_new
+
    def new
+   end
+
+   def cadastro
+   end
+
+   def cadastro_new
    end
 
    def create 
