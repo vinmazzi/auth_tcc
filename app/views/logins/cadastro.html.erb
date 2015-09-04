@@ -1,31 +1,31 @@
-<%= form_for :cadastro, url: cadastro_new do |l| %>
+<%= form_for :cadastro, :url => {:action => 'cadastro_new'} do |c| %>
    <p>
-  	<%= l.label :Nome%><br>
-  	<%= l.text_field 'Nome'%><br>
+  	<%= c.label :Nome%><br>
+  	<%= c.text_field 'nome'%><br>
    </p>
 
    <p>
-  	<%= l.label :Sobrenome%><br>
-  	<%= l.text_field 'sobrenome'%><br>
+  	<%= c.label :Sobrenome%><br>
+  	<%= c.text_field 'sobrenome'%><br>
    </p>
    <p>
-  	<%= l.label :Email%><br>
-  	<%= l.text_field 'email'%><br>
+  	<%= c.label :Email%><br>
+  	<%= c.text_field 'email'%><br>
    </p>
    <p>
-  	<%= l.label :Cpf%><br>
-  	<%= l.text_field 'cpf'%><br>
+  	<%= c.label :Cpf%><br>
+  	<%= c.text_field 'cpf'%><br>
    </p>
    <p>
-  	<%= l.label :Usuario%><br>
-  	<%= l.text_field 'username'%><br>
+  	<%= c.label :Usuario%><br>
+  	<%= c.text_field 'username'%><br>
    </p>
    <p>
-  	<%= l.label :Senha%><br>
-  	<%= l.password_field 'pwd'%><br>
+  	<%= c.label :Senha%><br>
+  	<%= c.password_field 'pwd'%><br>
    </p>
    <p>
-  	<%= l.submit :Enviar%><br>
+  	<%= c.submit :Enviar%><br>
    </p>
 <% end %>
 

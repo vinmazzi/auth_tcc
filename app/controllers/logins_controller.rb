@@ -1,3 +1,4 @@
+require 'json'
 class LoginsController < ApplicationController
 
    helper_method :cadastro_new
@@ -9,6 +10,20 @@ class LoginsController < ApplicationController
    end
 
    def cadastro_new
+     cadastro = params[:cadastro]
+     if(cadastro)
+     	json = JSON.generate(params[:cadastro])
+     	nome = cadastro["nome"]
+     	sobrenome = cadastro["sobrenome"]
+     	email = cadastro["email"]
+     	cpf = cadastro["cpf"]
+     	usuario = cadastro["username"]
+     	senha = cadastro["pwd"]
+     	render plain: json
+     else
+        redirect_to "/logins/cadastro"
+     end 
+
    end
 
    def create 

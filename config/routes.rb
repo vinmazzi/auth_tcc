@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
    
   get 'logins/cadastro'
+  post 'logins/cadastro'
+  get 'logins/cadastro_new'
+  post 'logins/cadastro_new'
   resources :logins
   root 'logins#new'
   get '*path', to: 'logins#new'
