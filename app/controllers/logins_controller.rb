@@ -10,16 +10,6 @@ class LoginsController < ApplicationController
    def cadastro
    end
 
-   def teste
-     uri = URI('http://localhost:3000/logins/create_new')
-     res = Net::HTTP.get_response(uri)
-     if(res)
-      render plain: res
-     else
-        render plain: "Isso é um teste"
-     end
-   end
- 
    def cadastro_new
      cadastro = params[:cadastro]
      url = "http://localhost:3000/logins/teste"
