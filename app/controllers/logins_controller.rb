@@ -1,4 +1,5 @@
 require 'json'
+require 'net/http'
 class LoginsController < ApplicationController
 
    helper_method :cadastro_new
@@ -9,8 +10,20 @@ class LoginsController < ApplicationController
    def cadastro
    end
 
+   def teste
+     uri = URI('http://localhost:3000/logins/create_new')
+     res = Net::HTTP.get_response(uri)
+     if(res)
+      render plain: res
+     else
+        render plain: "Isso é um teste"
+     end
+   end
+ 
    def cadastro_new
      cadastro = params[:cadastro]
+     url = "http://localhost:3000/logins/teste"
+     request = new XMLHttpRequest()
      if(cadastro)
      	json = JSON.generate(params[:cadastro])
      	nome = cadastro["nome"]
@@ -19,7 +32,7 @@ class LoginsController < ApplicationController
      	cpf = cadastro["cpf"]
      	usuario = cadastro["username"]
      	senha = cadastro["pwd"]
-     	render plain: json
+     	render plain: "code: #{resp.code}"
      else
         redirect_to "/logins/cadastro"
      end 
