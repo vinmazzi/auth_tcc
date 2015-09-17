@@ -1,7 +1,7 @@
 require 'json'
 require 'net/http'
 class LoginsController < ApplicationController
-
+   protect_from_forgery except: :new
    helper_method :cadastro_new
 
    def new
@@ -29,16 +29,12 @@ class LoginsController < ApplicationController
 
    end
 
-   def create 
-	teste = params[:login]
-	login = teste["login"]
-	senha = teste["pwd"]
+   def libera 
 	ip = request.remote_ip
-	if(login == "vmazzi" && senha == "teste")
+	if(ip)
 		system("iptables -t nat -I AUTH_TESTE -s #{ip}/32 -p tcp -j ACCEPT")
 		#system("iptables -t nat -D PREROUTING 1")
-		redirect_to :back
+		render plain: ip.inspect
 	end
-	
    end
 end
