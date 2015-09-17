@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
    
+  get 'logins/libera'
+  post 'logins/libera'
   get 'logins/cadastro'
   post 'logins/cadastro'
+  get 'logins/teste'
+  post 'logins/teste'
   get 'logins/cadastro_new'
   post 'logins/cadastro_new'
   resources :logins
