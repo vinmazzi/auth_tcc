@@ -1,12 +1,24 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TCC">
+    <meta name="author" content="AiltonJr">
+
     <title>Login - Spot Anywhere</title>
-    <link href="http://192.158.1.1/Site.css" rel="stylesheet" type="text/css" />
-    <link href="http://192.158.1.1/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
     <script src="http://192.158.1.1/modernizr-2.6.2.js"></script>
+    <script src="http://192.158.1.1/jquery-2.1.4.min.js"></script>
+    <script src="http://192.158.1.1/bootstrap.min.js"></script>
+    <script type="text/JavaScript" src="http://192.158.1.1/jquery.mask.min.js"></script>
+    <script type="text/JavaScript" src="http://192.158.1.1/utils.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -40,9 +52,7 @@
     }
 </style>
 
-<script type="text/JavaScript" src="http://192.158.1.1/jquery-2.1.4.min.js"></script>
-<script type="text/JavaScript" src="http://192.158.1.1/utils.js"></script>
-<script type="text/JavaScript" src="http://192.158.1.1/login.js"></script>
+<script type="text/JavaScript" src="/Scripts/Site/login.js"></script>
 
 <div class="container">
     <div id="erro-page-alert" style="display: none; max-width: 1140px; position: absolute;" class="alert alert-danger col-sm-12 text-center"></div>
@@ -104,7 +114,7 @@
                     <div class="form-group">
                         <label for="txtCpf" class="col-md-4 control-label">CPF:</label>
                         <div class="col-md-8">
-                            <input id="txtCpf" type="text" class="form-control" placeholder="cpf" maxlength="14" onkeypress="javascript: mascaraCpf(this, cpfMask);">
+                            <input id="txtCpf" type="text" class="form-control" placeholder="cpf" maxlength="14">
                         </div>
                     </div>
 
@@ -112,6 +122,21 @@
                         <label for="txtNome" class="col-md-4 control-label">Nome:</label>
                         <div class="col-md-8">
                             <input id="txtNome" type="text" class="form-control" placeholder="nome" maxlength="50">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtDtNascimento" class="col-md-4 control-label">Data de Nascimento:</label>
+                        <div class="col-md-8">
+                            <input id="txtDtNascimento" type="text" class="form-control" placeholder="dd/mm/yyyy" maxlength="10">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Sexo:</label>
+                        <div class="col-md-8">
+                            <label class="radio-inline"><input id="optMasculino" type="radio" name="optradio">Masculino</label>
+                            <label class="radio-inline"><input id="optFeminino" type="radio" name="optradio">Feminino</label>
                         </div>
                     </div>
 
@@ -164,14 +189,18 @@
                     </div>
 
                     <div class="form-group">
+                        <div style="width: 90%; margin:auto;">
+                            <label class="checkbox-inline"><input id="chkPromocao" type="checkbox"><small>Aceito receber promoções e ofertas da Spot Anywhere e de seus parceiros.</small></label>
+                            <br>
+                            <label class="checkbox-inline"><input id="chkTermo" type="checkbox"><small>Li e concordo com os <a id="lnkTermosUso" href='javascript:void(0);'>Termos de uso</a></small></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-md-offset-4 col-md-9">
                             <button id="btnSignup" type="button" class="btn btn-success"><i class="glyphicon glyphicon-hand-right"></i>&nbsp;&nbsp;Registrar</button>
                         </div>
                     </div>
-
-
-
-
                 </form>
             </div>
         </div>
@@ -233,7 +262,76 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="mdlExcluirUsuario" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Termos de uso</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="msgTermoUso" class="container-fluid" style="overflow-y: scroll;">
+                        <b>1. Cadastro</b>
+
+                        <br /><br />
+                        Para utilizar algumas funcionalidades e recursos do Site você precisará realizar um cadastro, nos termos da nossa Política de Privacidade. Poderemos, nessa oportunidade, solicitar o fornecimento de alguns dados pessoais seus, tais como nome, idade e endereço de e-mail, dentre outros.
+                        <br /><br />
+                        Você deve ter 18 anos ou mais e plena capacidade civil para utilizar o Site e seus recursos; nos demais casos você deverá ter a autorização de seus pais ou responsáveis legais.
+                        <br /><br />
+                        Você poderá solicitar a exclusão dos dados pessoais que você nos fornecer dos nossos registros, clicando aqui .
+                        <br /><br />
+                        Mesmo após a sua solicitação de exclusão, manteremos, contudo, os dados agregados e não identificáveis, para fins estatísticos, bem como os dados e informações que somos obrigados a manter em registro por lei.
+                        <br /><br />
+                        Enquanto estivermos em posse de informações ou dados seus, poderemos fornecê-los às autoridades competentes para colaborar em investigações ou procedimentos judiciais, ainda que preparatórios ou cautelares, desde que permitido por lei.
+                        <br /><br />
+
+                        <b>2. Conduta</b>
+
+                        <br /><br />
+                        A Spot Anywhere oferece ao Usuário um Site que permite a navegação em seu conteúdo, que ficará hospedado nos servidores da Spot Anywhere.
+                        <br /><br />
+                        O Site e os recursos que estão nele são destinados ao seu uso pessoal e recreativo. Ao utilizar o Site e os nossos sites em geral, você não deve:
+                        <br /><br />
+                        Disseminar conteúdo ilegal, ofensivo, violento ou que viole a privacidade e a intimidade de terceiros.
+                        <br /><br />Violar propriedade intelectual de terceiros.
+                        <br /><br />Disseminar vírus ou código de computador malicioso, arquivos ou programas desenvolvidos para coletar dados não autorizados, interromper, destruir ou limitar a funcionalidade do Site ou do Site, de qualquer software ou hardware de computador ou equipamentos de telecomunicações em geral (malware ou spyware).
+                        <br /><br />Interferir com a arquitetura do Site ou dos sites por qualquer forma, meio ou técnica.
+                        <br /><br />Disfarçar ou ocultar o número de IP (internet protocol) que identifica sua conexão à internet.
+                        <br /><br />Usar qualquer dos elementos do Site ou dos sites para fins comerciais, publicitários ou em qualquer outro que não represente a finalidade principal do Site.
+                        <br /><br />Criar ou utilizar mais que uma única forma de identificação para utilizar o Site, utilizar identificação de um terceiro, ou permitir que terceiros utilizem a sua identificação.
+                        <br /><br />Poderemos impedir que você utilize o Site ou qualquer de seus recursos caso, no nosso entendimento, você viole quaisquer das condições destes Termos. Informaremos a você da suspensão de seu uso do Site.
+                        <br /><br />
+
+                        <b>3. Licença dos seus conteúdos e propriedade intelectual</b>
+
+                        <br /><br />
+                        Ao enviar qualquer conteúdo ou informação para o Site, incluindo textos, tais como comentários, fóruns de discussão, comunidades, enquetes, testes, seção de dúvidas, participação em concurso cultural, jogos, envio de fotografias, ilustrações, vídeos, arquivos de áudio e outros materiais, você declara autorizar, de forma gratuita, não exclusiva, perpétua, global e livre de remuneração, compensação, retenção ou indenização, o uso do conteúdo por nós e pelas empresas do Grupo Abril, por qualquer modalidade e suporte, para publicação, reprodução, transmissão, retransmissão, distribuição, comunicação ao público, edição, adaptação e outras transformações, tradução para qualquer idioma, inclusão em quaisquer outras obras, representação, execução, uso por radiodifusão e outros meios de comunicação, mediante o emprego de qualquer tecnologia, exposição, inclusão em base de dados e quaisquer outras modalidades de utilização existentes ou que venham a ser inventadas no futuro, em quaisquer suportes existentes ou que venham a ser inventados no futuro, autorizando também a criação de obras derivadas e o sublicenciamento do material para uso em outras plataformas de comunicação, sem limite de tempo, território ou número de utilizações. Qualquer eventual omissão não implicará limitação de uso do material por nós.
+                        <br /><br />
+                        Caso você não concorde com a autorização acima, ou não tenha os direitos necessários para emitir essa autorização com relação a um conteúdo, você não deve enviar o conteúdo para nós.
+                        <br /><br />
+                        Você só deve enviar pelo Site ou para o Site materiais originais seus. Todos os direitos autorais patrimoniais sobre o material submetido por você continuam sendo seus.
+                        <br /><br />
+                        Não temos qualquer obrigação de uso dos seus conteúdos e nem perderemos o direito de usá-los, ainda que esse direito não seja exercido por nós.
+                        <br /><br />
+
+                        <b>4. Mais informãções</b>
+
+                        <br /><br />
+                        A Spot Anywhere se reserva o direito de modificar a qualquer momento a apresentação, configuração e disponibilização do Site.
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnLiConcordo" type="button" class="btn btn-success" data-dismiss="modal"><small>Li e concordo com os termos de uso</small></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 
 
 
@@ -248,8 +346,6 @@
             <p>&copy; 2015 - TCC(FIAP)</p>
         </footer>
     </div>
-
-    <script src="http://192.158.1.1/jquery-2.1.4.min.js"></script>
-    <script src="http://192.158.1.1/bootstrap.min.js"></script>
+    
 </body>
 </html>
