@@ -3,7 +3,7 @@ require 'net/http'
 class LoginsController < ApplicationController
    protect_from_forgery except: :new
    helper_method :cadastro_new
-
+   
    def new
    end
 
@@ -34,7 +34,8 @@ class LoginsController < ApplicationController
 	if(ip)
 		system("iptables -t nat -I AUTH_TESTE -s #{ip}/32 -p tcp -j ACCEPT")
 		#system("iptables -t nat -D PREROUTING 1")
-		render plain: ip.inspect
+		#render plain: ip.inspect
+		render plain: request.GET["url"]
 	end
    end
 end
